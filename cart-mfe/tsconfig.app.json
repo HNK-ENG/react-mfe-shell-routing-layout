@@ -10,9 +10,6 @@
     "jsx": "react-jsx",
     "useDefineForClassFields": true,
 
-    /* Vite compiles each file on its own and never type-checks, so the type
-       checker has to assume the same: no cross-file emit, no erasable-only
-       syntax, and .tsx extensions stay in the import specifiers. */
     "noEmit": true,
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
