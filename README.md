@@ -13,7 +13,8 @@ same set of MFEs in the same positions.
 
 ## How to run the project
 
-You need a Node.js environment to run this project on your local machine.
+You need Node.js and npm, Node's package manager, to run this project on your
+local machine.
 
 First, install the packages:
 
