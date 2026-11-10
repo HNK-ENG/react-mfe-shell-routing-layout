@@ -1,0 +1,19 @@
+{
+  "name": "custom-shell-app-router-configs-and-layout",
+  "private": true,
+  "description": "Routing configuration and layout handling in a React app shell, horizontal split. Step 1: four standalone apps, not yet federated.",
+  "scripts": {
+    "install:all": "npm --prefix shell install && npm --prefix product-mfe install && npm --prefix cart-mfe install && npm --prefix user-mfe install",
+    "dev:all": "npm --prefix shell run dev & npm --prefix product-mfe run dev & npm --prefix cart-mfe run dev & npm --prefix user-mfe run dev & wait",
+    "dev:shell": "npm --prefix shell run dev",
+    "dev:product": "npm --prefix product-mfe run dev",
+    "dev:cart": "npm --prefix cart-mfe run dev",
+    "dev:user": "npm --prefix user-mfe run dev",
+    "build:all": "npm --prefix product-mfe run build && npm --prefix cart-mfe run build && npm --prefix user-mfe run build && npm --prefix shell run build",
+    "preview:all": "trap 'kill 0' EXIT INT TERM; npm --prefix shell run preview & npm --prefix product-mfe run preview & npm --prefix cart-mfe run preview & npm --prefix user-mfe run preview & wait",
+    "preview:shell": "npm --prefix shell run preview",
+    "preview:product": "npm --prefix product-mfe run preview",
+    "preview:cart": "npm --prefix cart-mfe run preview",
+    "preview:user": "npm --prefix user-mfe run preview"
+  }
+}
