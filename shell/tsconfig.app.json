@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "types": ["vite/client"],
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "jsx": "react-jsx",
+    "useDefineForClassFields": true,
+
+    /* Federated remotes exist only at runtime. ./@mf-types is downloaded from
+       each MFE at dev/build time and holds the .d.ts they generated from their
+       own source, laid out as @mf-types/<remoteName>/<exposedModule>.d.ts -
+       which is exactly the shape of the import specifiers, so one wildcard
+       maps them all. Generated, gitignored, never edited by hand.
+       (No baseUrl - TypeScript 7 removed it; paths resolve against this file.) */
+    "paths": {
+      "*": ["./@mf-types/*"]
+    },
+
+    /* Vite compiles each file on its own and never type-checks, so the type
+       checker has to assume the same: no cross-file emit, no erasable-only
+       syntax, and .tsx extensions stay in the import specifiers. */
+    "noEmit": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
+    "allowImportingTsExtensions": true,
+
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noUncheckedSideEffectImports": true,
+
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}

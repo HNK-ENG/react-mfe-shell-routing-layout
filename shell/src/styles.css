@@ -1,0 +1,186 @@
+:root {
+  --ink: #1f2430;
+  --muted: #6b7280;
+  --line: #d9dee8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font:
+    15px/1.5 ui-sans-serif,
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
+  color: var(--ink);
+  background: #f6f7fb;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+}
+
+/* --- the three parts of the shell layout -------------------------------- */
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.shell-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 10px 16px;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+
+.shell-nav {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.shell-nav a {
+  padding: 4px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.shell-nav a:hover {
+  border-color: var(--ink);
+}
+
+.shell-nav a.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+/* The content area: a vertical stack of full-width lanes. Each mounted MFE
+   gets one lane and they share the height evenly - that is the horizontal
+   split. `min-height: 0` lets a lane scroll instead of pushing the footer off
+   the screen. */
+.shell-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  min-height: 0;
+}
+
+.shell-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+  background: #fff;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* --- region loading skeleton -------------------------------------------- */
+
+/* Stands in for a page card while its remote is fetched, matching the card's
+   box and minimum height so the region does not resize when the MFE lands. */
+.skeleton {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  min-height: 240px;
+  padding: 24px 20px;
+
+  border: 3px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.skeleton-bar {
+  display: block;
+  height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #e9edf4 25%, #f4f6fa 37%, #e9edf4 63%);
+  background-size: 400% 100%;
+  animation: skeleton-sheen 1.4s ease-in-out infinite;
+}
+
+.skeleton-title {
+  width: min(320px, 70%);
+  height: 20px;
+}
+
+.skeleton-line {
+  width: min(220px, 55%);
+}
+
+.skeleton-line-short {
+  width: min(160px, 40%);
+}
+
+@keyframes skeleton-sheen {
+  from {
+    background-position: 100% 50%;
+  }
+  to {
+    background-position: 0 50%;
+  }
+}
+
+/* Keep the placeholder, drop the sweep, when motion is unwelcome. */
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-bar {
+    animation: none;
+    background: #e9edf4;
+  }
+}
+
+/* --- shell-owned pages (home, 404) -------------------------------------- */
+
+.shell-page {
+  flex: 1;
+  padding: 20px;
+  border-radius: 10px;
+  background: #fff;
+  border: 3px dashed var(--line);
+}
+
+.shell-page p {
+  margin: 0 0 6px;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.page-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.page-links a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed currentColor;
+  font-size: 14px;
+}
