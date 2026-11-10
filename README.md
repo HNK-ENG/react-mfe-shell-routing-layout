@@ -5,25 +5,6 @@ This sample project demonstrates the routing configurations and layouts of optio
 `Routing_configurations_and_wireframes_with_comments` document. The final section of
 this README addresses the comments the professor marked on option 1.
 
-The following table lists the exact routes, layouts and corresponding MFE components
-drawn in option 1.
-
-| URL                        | Layout           | Regions (top to bottom)                                                                         |
-| -------------------------- | ---------------- | ----------------------------------------------------------------------------------------------- |
-| `/`                        | single           | product-mfe → `LandingPage`                                                                     |
-| `/30722`                   | single           | redirects to `/` → product-mfe → `LandingPage`                                                  |
-| `/30722/csc`               | single           | product-mfe → `ProductPage`                                                                  |
-| `/30722/fav`               | single           | product-mfe → `FavPage`                                                                      |
-| `/30723/cart`              | horizontal split | cart-mfe → `CartPage`, product-mfe → `RecommendationAtCartPage`                              |
-| `/30723/checkout`          | horizontal split | cart-mfe → `CheckoutPage`, product-mfe → `RecommendationAtCartPage`                          |
-| `/30723/checkout/login`    | horizontal split | cart-mfe → `AskToLoginPage`, user-mfe → `LoginPage`, product-mfe → `RecommendationAtCartPage` |
-| `/30723/checkout/register` | horizontal split | cart-mfe → `AskToLoginPage`, user-mfe → `RegisterPage`, product-mfe → `RecommendationAtCartPage` |
-| `/30724/user`              | single           | user-mfe → `UserPage`                                                                        |
-| `/30724/login`             | single           | user-mfe → `LoginPage`                                                                       |
-| `/30724/register`          | single           | user-mfe → `RegisterPage`                                                                    |
-
-Anything else is a shell-level 404, with no MFE loaded.
-
 No page in this demo has its real components or styling, but the app shell's centralized
 routing configuration and layout handling behave as they would in a real application.
 Every route is owned by the same MFE that would own it there, and each route mounts the
