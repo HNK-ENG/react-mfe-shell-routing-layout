@@ -51,13 +51,16 @@ Then open <http://localhost:8000/>.
    Yes. `/` and `/30722` are equivalent, and the URL shown to the user remains `/` on the
    landing page of the entire web app.
 
-3. Where is the config coming from that the shells knows to mount product or user mfe? or is product MFE always present(default) and only n selected pages, user-mfe added on top?
-  The config is shell/src/shellRoutes.ts. It maps each URL pattern to the list of MFEs the shell mounts there.
-  Product-mfe is not a default and is not always present. It is listed explicitly per route. The shell decides which MFEs mount and each MFE's own <Routes> then decides which page it renders. Those are two independent decisions.
-  The drawback is that this config lives in the shell. Adding a route, or changing the order MFEs appear in on an existing route, requires a shell redeployment even when only one MFE actually changed.
+3. Where is the config coming from that the shells knows to mount product or user mfe? or is product MFE always present(default) and only n selected pages, user-      mfe added on top?
 
 
-4. Are there 1 or 2 named router outlets at the bottom so if product is present it always appear in the same html node? or do you have two numbered slot and product takes 2 and if user is not present 1 is empty and collapse? or shell adding new entry node for those upon config?
+      The config is shell/src/shellRoutes.ts. It maps each URL pattern to the list of MFEs the shell mounts there.
+     Product-mfe is not a default and is not always present. It is listed explicitly per route. The shell decides which MFEs mount and each MFE's own <Routes
+      then decides which page it renders. Those are two independent decisions.
+     The drawback is that this config lives in the shell. Adding a route, or changing the order MFEs appear in on an existing route, requires a shell redeployment         even when only one MFE actually changed.
+
+
+5. Are there 1 or 2 named router outlets at the bottom so if product is present it always appear in the same html node? or do you have two numbered slot and product takes 2 and if user is not present 1 is empty and collapse? or shell adding new entry node for those upon config?
 
    There are no fixed or numbered slots. The shell renders one `<section>` per MFE named
    in the matched config entry, in config order, so an absent MFE produces no node at all
