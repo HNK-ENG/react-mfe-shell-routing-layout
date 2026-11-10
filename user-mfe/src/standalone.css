@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  background: #f6f7fb;
+  font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: #1f2430;
+}
+
+.standalone-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 10px 16px;
+  background: #fff;
+  border-bottom: 1px solid #d9dee8;
+  font-size: 13px;
+}

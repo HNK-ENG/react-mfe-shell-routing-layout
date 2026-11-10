@@ -1,0 +1,33 @@
+.user-page {
+  --user-accent: #16a34a;
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  min-height: 240px;
+
+
+  border: 3px solid var(--user-accent);
+  border-radius: 10px;
+  background: #edfaf1;
+  font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.user-page h2 {
+  margin: 0;
+  color: var(--user-accent);
+}
+
+.user-page .page-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-page .page-links a {
+  color: var(--user-accent);
+  border-bottom: 1px dashed currentColor;
+}
