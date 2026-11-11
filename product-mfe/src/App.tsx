@@ -3,35 +3,34 @@ import { Route, Routes, Navigate } from 'react-router'
 import LandingPage from './pages/LandingPage.tsx'
 import ProductPage from './pages/ProductPage.tsx'
 import FavPage from './pages/FavPage.tsx'
-import RecommendationAtCartPage from './pages/RecommendationAtCartPage.tsx'
 import './mfe.css'
+import { sharedPages, type SharedPageName } from './manifest.ts'
 
-export default function App() {
+
+type AppProps = {
+  page?: SharedPageName
+}
+
+export default function App({page}: AppProps) {
   useEffect(() => {
     console.log('[product-mfe] App mounted')
     return () => console.log('[product-mfe] App unmounted')
   }, [])
 
+  if (page) {
+    const NamedPage = sharedPages[page]
+    if (!NamedPage) {
+      return <NoComponentHere />
+    }
+    return <NamedPage />
+  }
+
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
-
-      {/* routes owned by product-mfe */}
       <Route path="/30722" element={<Navigate to="/" replace />} />
       <Route path="/30722/csc" element={<ProductPage />} />
       <Route path="/30722/fav" element={<FavPage />} />
-
-      {/* the component this MFE contributes to cart-mfe's routes */}
-      <Route path="/30723/cart" element={<RecommendationAtCartPage />} />
-      <Route path="/30723/checkout" element={<RecommendationAtCartPage />} />
-      <Route
-        path="/30723/checkout/login"
-        element={<RecommendationAtCartPage />}
-      />
-      <Route
-        path="/30723/checkout/register"
-        element={<RecommendationAtCartPage />}
-      />
 
       <Route path="*" element={<NoComponentHere />} />
     </Routes>

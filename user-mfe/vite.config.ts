@@ -20,10 +20,15 @@ export default defineConfig({
         './App': './src/App.tsx',
       },
       shared,
-      dts: false
+      dts: false,
     }),
   ],
-  server: { port: PORT, strictPort: true, cors: true, origin: `http://localhost:${PORT}` },
+  server: {
+    port: PORT,
+    strictPort: true,
+    cors: true,
+    origin: `http://localhost:${PORT}`,
+  },
   preview: { port: PORT, strictPort: true, cors: true },
   build: { target: 'esnext' },
 })

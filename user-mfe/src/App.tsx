@@ -1,26 +1,34 @@
 import { useEffect } from 'react'
 import { Route, Routes } from 'react-router'
+import './mfe.css'
 import UserPage from './pages/UserPage.tsx'
 import LoginPage from './pages/LoginPage.tsx'
 import RegisterPage from './pages/RegisterPage.tsx'
-import './mfe.css'
+import { sharedPages, type SharedPageName } from './manifest.ts'
 
-export default function App() {
+type AppProps = {
+  page?: SharedPageName
+}
+
+export default function App({ page }: AppProps) {
   useEffect(() => {
     console.log('[user-mfe] App mounted')
     return () => console.log('[user-mfe] App unmounted')
   }, [])
 
+  if (page) {
+    const NamedPage = sharedPages[page]
+    if (!NamedPage) {
+      return <NoComponentHere />
+    }
+    return <NamedPage />
+  }
+
   return (
     <Routes>
-      {/* routes owned by user-mfe */}
       <Route path="/30724/user" element={<UserPage />} />
       <Route path="/30724/login" element={<LoginPage />} />
       <Route path="/30724/register" element={<RegisterPage />} />
-
-      {/* the components this MFE contributes to cart-mfe's routes */}
-      <Route path="/30723/checkout/login" element={<LoginPage />} />
-      <Route path="/30723/checkout/register" element={<RegisterPage />} />
 
       <Route path="*" element={<NoComponentHere />} />
     </Routes>

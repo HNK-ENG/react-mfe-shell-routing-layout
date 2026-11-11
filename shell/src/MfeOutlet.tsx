@@ -27,12 +27,12 @@ export default function MfeOutlet() {
 
   if (!matched) return <NotFoundPage />
 
-  return matched.mfes.map((name) => {
-    const RemoteApp = remotes[name]
+  return matched.mount.map(({ mfe, page }) => {
+    const RemoteApp = remotes[mfe]
     return (
-      <section key={name} className="mfe-region" data-mfe={name}>
-        <Suspense fallback={<MfeSkeleton name={name} />}>
-          <RemoteApp />
+      <section key={mfe} className="mfe-region" data-mfe={mfe}>
+        <Suspense fallback={<MfeSkeleton name={mfe} />}>
+          <RemoteApp page={page} />
         </Suspense>
       </section>
     )
