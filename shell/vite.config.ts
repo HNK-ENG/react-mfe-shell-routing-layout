@@ -7,7 +7,7 @@ const PORT = 8000
 const shared = {
   react: { singleton: true },
   'react-dom': { singleton: true },
-  'react-router': { singleton: true },
+  'react-router': { singleton: true},
 }
 
 const remote = (name: string, port: number) => ({
