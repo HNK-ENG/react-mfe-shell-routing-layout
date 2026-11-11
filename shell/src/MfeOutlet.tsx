@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { useLocation, matchPath } from 'react-router'
-import { shellRoutes } from './shellRoutes.ts'
+import { PRODUCT, CART, USER, shellRoutes, type MfeName } from './shellRoutes.ts'
 import NotFoundPage from './pages/NotFoundPage.tsx'
 import MfeSkeleton from './MfeSkeleton.tsx'
 
@@ -14,12 +14,12 @@ const slow =
 
 const remotes = {
   //@ts-ignore
-  product: lazy(slow(() => import('productMfe/App'), 2000)),
+  [PRODUCT]: lazy(slow(() => import('productMfe/App'), 2000)),
   //@ts-ignore
-  cart: lazy(slow(() => import('cartMfe/App'), 4000)),
+  [CART]: lazy(slow(() => import('cartMfe/App'), 4000)),
   //@ts-ignore
-  user: lazy(slow(() => import('userMfe/App'), 6000)),
-}
+  [USER]: lazy(slow(() => import('userMfe/App'), 6000)),
+} satisfies Record<MfeName, unknown>
 
 export default function MfeOutlet() {
   const { pathname } = useLocation()
