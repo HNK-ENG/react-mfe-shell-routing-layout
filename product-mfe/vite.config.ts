@@ -10,7 +10,7 @@ const PORT = 30722
 const shared = {
   react: { singleton: true },
   'react-dom': { singleton: true },
-  'react-router': { singleton: true, import: false as const },
+  'react-router': { singleton: true},
 }
 
 export default defineConfig({
@@ -23,7 +23,7 @@ export default defineConfig({
         './App': './src/App.tsx',
       },
       shared,
-      dts: false
+      dts: false,
     }),
   ],
   server: {

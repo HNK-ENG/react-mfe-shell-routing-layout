@@ -26,7 +26,7 @@ export default defineConfig({
       remotes: {
         productMfe: remote('productMfe', 30722),
         cartMfe: remote('cartMfe', 30723),
-        userMfe: remote('userMfe', 30724),
+        userMfe: remote('userMfe', 30725),
       },
       shared,
       dts: false,

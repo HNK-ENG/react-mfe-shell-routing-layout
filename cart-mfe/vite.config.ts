@@ -7,7 +7,7 @@ const PORT = 30723
 const shared = {
   react: { singleton: true },
   'react-dom': { singleton: true },
-  'react-router': { singleton: true, import: false as const },
+  'react-router': { singleton: true },
 }
 
 export default defineConfig({
